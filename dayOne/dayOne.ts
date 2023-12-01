@@ -65,8 +65,17 @@ function calibrateDocument(line: string, dictionary: MyDictionary):any {
         dictionary[lineNumber] = splicedCalibrationNumber;
     }
     return dictionary;
-}
+};
+
 let lineNumber = 0;
+
+function sumDictionary(dictionary: MyDictionary):number {
+    let total = 0;
+    for (let line in dictionary){
+        total += Number(dictionary[line]);
+    }
+    return total
+};
 
 const readInterface = readline.createInterface({
     input: fs.createReadStream('inputDayOne.txt'),
@@ -83,11 +92,4 @@ readInterface.on('close', function(){
     console.log(answer);
 });
 
-function sumDictionary(dictionary: MyDictionary):number {
-    let total = 0;
-    for (let line in dictionary){
-        total += Number(dictionary[line]);
-    }
-    return total
-}
 
